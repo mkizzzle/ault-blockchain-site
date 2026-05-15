@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ault Blockchain — Newsroom</title>
+    <link>https://tanstack-start-app.marko8knezevic.workers.dev/newsroom</link>
+    <description>Press releases, announcements, and third-party coverage from Ault Blockchain.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 15 May 2026 19:50:00 GMT</lastBuildDate>
+    <atom:link href="https://tanstack-start-app.marko8knezevic.workers.dev/rss/newsroom.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Ault Blockchain launches mainnet — Hybrid PoW/PoS sovereign chain, Licensed Mining Nodes live</title>
+      <link>https://tanstack-start-app.marko8knezevic.workers.dev/newsroom</link>
+      <guid isPermaLink="false">https://tanstack-start-app.marko8knezevic.workers.dev/newsroom#18e90</guid>
+      <pubDate>Wed, 03 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Ault Blockchain mainnet is live. Hybrid PoW/PoS consensus with a Licensed Mining Node layer for off-chain verifiable work is now operational.</description>
+    </item>
+    <item>
+      <title>Smart-contract audit complete — report pending public release</title>
+      <link>https://tanstack-start-app.marko8knezevic.workers.dev/newsroom</link>
+      <guid isPermaLink="false">https://tanstack-start-app.marko8knezevic.workers.dev/newsroom#8f1a2</guid>
+      <pubDate>Wed, 21 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Independent smart-contract audit has been completed. The full report is pending legal review before public release.</description>
+    </item>
+    <item>
+      <title>Argentum (Ag) RWA tokenization program soft-launched on Ault Blockchain</title>
+      <link>https://tanstack-start-app.marko8knezevic.workers.dev/newsroom</link>
+      <guid isPermaLink="false">https://tanstack-start-app.marko8knezevic.workers.dev/newsroom#a3b4c</guid>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 GMT</pubDate>
+      <description>The Argentum RWA tokenization program has soft-launched on Ault Blockchain, marking the first structured product deployment on the network.</description>
+    </item>
+    <item>
+      <title>OnlyBulls exceeds 50,000 downloads across iOS, Android, and web</title>
+      <link>https://tanstack-start-app.marko8knezevic.workers.dev/newsroom</link>
+      <guid isPermaLink="false">https://tanstack-start-app.marko8knezevic.workers.dev/newsroom#c5d6e</guid>
+      <pubDate>Mon, 06 May 2026 00:00:00 GMT</pubDate>
+      <description>OnlyBulls, the AULT wallet and AI market intelligence companion app, has exceeded 50,000 cumulative downloads across all platforms.</description>
+    </item>
+    <item>
+      <title>Mainnet live — Hybrid PoW/PoS sovereign chain operational, Licensed Mining Node layer active</title>
+      <link>https://tanstack-start-app.marko8knezevic.workers.dev/newsroom</link>
+      <guid isPermaLink="false">https://tanstack-start-app.marko8knezevic.workers.dev/newsroom#f7a8b</guid>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>Ault Blockchain mainnet has been live since 3 March 2026. The Licensed Mining Node layer is active and accepting new licensee registrations.</description>
+    </item>
+  </channel>
+</rss>

@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhitepaperRouteImport } from './routes/whitepaper'
 import { Route as TokenomicsRouteImport } from './routes/tokenomics'
 import { Route as SecurityRouteImport } from './routes/security'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as NodesRouteImport } from './routes/nodes'
 import { Route as NewsroomRouteImport } from './routes/newsroom'
 import { Route as MediaRouteImport } from './routes/media'
@@ -39,6 +40,11 @@ const TokenomicsRoute = TokenomicsRouteImport.update({
 const SecurityRoute = SecurityRouteImport.update({
   id: '/security',
   path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NodesRoute = NodesRouteImport.update({
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/media': typeof MediaRoute
   '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
+  '/partners': typeof PartnersRoute
   '/security': typeof SecurityRoute
   '/tokenomics': typeof TokenomicsRoute
   '/whitepaper': typeof WhitepaperRoute
@@ -135,6 +142,7 @@ export interface FileRoutesByTo {
   '/media': typeof MediaRoute
   '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
+  '/partners': typeof PartnersRoute
   '/security': typeof SecurityRoute
   '/tokenomics': typeof TokenomicsRoute
   '/whitepaper': typeof WhitepaperRoute
@@ -154,6 +162,7 @@ export interface FileRoutesById {
   '/media': typeof MediaRoute
   '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
+  '/partners': typeof PartnersRoute
   '/security': typeof SecurityRoute
   '/tokenomics': typeof TokenomicsRoute
   '/whitepaper': typeof WhitepaperRoute
@@ -174,6 +183,7 @@ export interface FileRouteTypes {
     | '/media'
     | '/newsroom'
     | '/nodes'
+    | '/partners'
     | '/security'
     | '/tokenomics'
     | '/whitepaper'
@@ -192,6 +202,7 @@ export interface FileRouteTypes {
     | '/media'
     | '/newsroom'
     | '/nodes'
+    | '/partners'
     | '/security'
     | '/tokenomics'
     | '/whitepaper'
@@ -210,6 +221,7 @@ export interface FileRouteTypes {
     | '/media'
     | '/newsroom'
     | '/nodes'
+    | '/partners'
     | '/security'
     | '/tokenomics'
     | '/whitepaper'
@@ -229,6 +241,7 @@ export interface RootRouteChildren {
   MediaRoute: typeof MediaRoute
   NewsroomRoute: typeof NewsroomRoute
   NodesRoute: typeof NodesRoute
+  PartnersRoute: typeof PartnersRoute
   SecurityRoute: typeof SecurityRoute
   TokenomicsRoute: typeof TokenomicsRoute
   WhitepaperRoute: typeof WhitepaperRoute
@@ -259,6 +272,13 @@ declare module '@tanstack/react-router' {
       path: '/security'
       fullPath: '/security'
       preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nodes': {
@@ -365,6 +385,7 @@ const rootRouteChildren: RootRouteChildren = {
   MediaRoute: MediaRoute,
   NewsroomRoute: NewsroomRoute,
   NodesRoute: NodesRoute,
+  PartnersRoute: PartnersRoute,
   SecurityRoute: SecurityRoute,
   TokenomicsRoute: TokenomicsRoute,
   WhitepaperRoute: WhitepaperRoute,
