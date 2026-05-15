@@ -30,16 +30,16 @@ export function Footer() {
             <a className={link} href="https://github.com/ault-blockchain" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
 
-          <div className={col}>
-            <div className={heading}>Documents</div>
-            {/* TODO: replace /whitepaper placeholder route with canonical whitepaper PDF when available */}
-            <a className={link} href="/whitepaper">Whitepaper</a>
-            <a className={link} href="/tokenomics">Tokenomics</a>
-            <a className={link} href="/legal/constitution">Constitution</a>
-            <a className={link} href="/legal/terms">Terms & Conditions</a>
-            <a className={link} href="/legal/privacy">Privacy Policy</a>
-            <a className={link} href="/legal/risk-disclosures">Risk Disclosures</a>
-          </div>
+        <div className={col}>
+          <div className={heading}>Documents</div>
+          <a className={link} href="/annual-reports">Annual Reports</a>
+          <a className={link} href="/whitepaper">Whitepaper</a>
+          <a className={link} href="/tokenomics">Tokenomics</a>
+          <a className={link} href="/legal/constitution">Constitution</a>
+          <a className={link} href="/legal/terms">Terms & Conditions</a>
+          <a className={link} href="/legal/privacy">Privacy Policy</a>
+          <a className={link} href="/legal/risk-disclosures">Risk Disclosures</a>
+        </div>
 
           <div className={col}>
             <div className={heading}>Connect</div>
