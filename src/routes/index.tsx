@@ -6,6 +6,12 @@ import { LiveStats } from "@/components/site/LiveStats";
 import { CredibilityStrip } from "@/components/site/CredibilityStrip";
 import { StatusBar } from "@/components/site/StatusBar";
 import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/tabs";
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -26,6 +32,7 @@ import {
   LockIcon,
 } from "@/components/site/icons";
 import { AultMarkets } from "@/components/site/AultMarkets";
+import { useChainStats } from "@/hooks/useChainStats";
 
 const FAQ_ITEMS: { q: string; a: string }[] = [
   {
@@ -687,6 +694,7 @@ function About() {
 }
 
 function Home() {
+  const { blockHeight, activeValidators } = useChainStats();
   return (
     <div className="min-h-screen bg-background text-foreground">
         <AnnouncementBar date="2026-05-15">
@@ -704,9 +712,231 @@ function Home() {
         <Cadence />
         <ExecutiveQuote />
         <FAQ />
+
+        {/* T2-g: Ecosystem gallery — tabbed card grid */}
+        <section className="border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+            <SectionLabel n="09" label="Ecosystem" />
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mt-4 mb-8">
+              Building on Ault
+            </h2>
+
+            <Tabs defaultValue="featured" className="w-full">
+              <TabsList className="mb-8">
+                {["Featured", "dApps", "Chains", "Infra", "Mining"].map((tab) => (
+                  <TabsTrigger key={tab} value={tab.toLowerCase()}>{tab}</TabsTrigger>
+                ))}
+              </TabsList>
+
+              <TabsContent value="featured">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {[
+                    { name: "Ault Markets", tag: "Institutional DeFi", desc: "Trade RWAs, crypto pairs, and compliant assets on Ault." },
+                    { name: "Ault DEX", tag: "On-chain trading", desc: "EVM-compatible execution entity inside Ault Markets." },
+                    { name: "Ault Lending", tag: "Yield", desc: "Composable lending and yield on the Ault protocol." },
+                    { name: "OnlyBulls", tag: "Consumer", desc: "AI market agent — iOS, Android, and web." },
+                    { name: "AultShield", tag: "RWA", desc: "Off-chain asset provenance anchored to chain state." },
+                    { name: "Numerai Era 5", tag: "AI / Quantitative", desc: "Stake-elevated inference within a deterministic compute window." },
+                  ].map(({ name, tag, desc }) => (
+                    <div key={name} className="rounded-lg border border-border bg-surface-2 p-6 hover:bg-surface-3 transition-colors">
+                      <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">{tag}</div>
+                      <div className="text-base font-medium text-foreground mb-1.5">{name}</div>
+                      <p className="text-sm text-text-secondary leading-relaxed">{desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="dapps">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {[
+                    { name: "Ault Markets", tag: "DEX · Lending" },
+                    { name: "Ault Vaults", tag: "Yield strategies" },
+                    { name: "AultShield", tag: "RWA provenance" },
+                    { name: "OnlyBulls", tag: "Consumer wallet" },
+                    { name: "Numerai", tag: "AI inference" },
+                    { name: "Onyx", tag: "Compliance" },
+                  ].map(({ name, tag }) => (
+                    <div key={name} className="rounded-lg border border-border bg-surface-2 p-6 hover:bg-surface-3 transition-colors">
+                      <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">{tag}</div>
+                      <div className="text-base font-medium text-foreground">{name}</div>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="chains">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {[
+                    { name: "Mainnet", tag: "Hybrid PoW/PoS", desc: "Live since March 3, 2026. ~0.9s finality." },
+                    { name: "Ault-EVM", tag: "EVM-compatible", desc: "Solidity 0.8.x bytecode. Use MetaMask, Hardhat, Foundry." },
+                  ].map(({ name, tag, desc }) => (
+                    <div key={name} className="rounded-lg border border-border bg-surface-2 p-6 hover:bg-surface-3 transition-colors">
+                      <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">{tag}</div>
+                      <div className="text-base font-medium text-foreground mb-1.5">{name}</div>
+                      <p className="text-sm text-text-secondary leading-relaxed">{desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="infra">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {[
+                    { name: "ault.explorer.xangle.io", tag: "Core explorer" },
+                    { name: "ault-evm.explorer.xangle.io", tag: "EVM explorer" },
+                    { name: "ault.hub.xangle.io", tag: "Staking hub" },
+                    { name: "docs.aultblockchain.com", tag: "Public docs" },
+                    { name: "REST API V1", tag: "Read-only" },
+                    { name: "Licensed Mining Nodes", tag: "Off-chain work" },
+                  ].map(({ name, tag }) => (
+                    <div key={name} className="rounded-lg border border-border bg-surface-2 p-6 hover:bg-surface-3 transition-colors">
+                      <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">{tag}</div>
+                      <div className="text-base font-medium text-foreground">{name}</div>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="mining">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {[
+                    { name: "Licensed Mining Node", tag: "Verifiable randomness", desc: "Off-chain work gated by licensed anti-spam check." },
+                    { name: "Phase 2 applicants", tag: "Application open", desc: "Phase 1 slots filled. Licensing Review Committee Q2 2026." },
+                    { name: "Node Holder dashboard", tag: "Mined-AULT", desc: "Track mined AULT balance and work credits in real time." },
+                  ].map(({ name, tag, desc }) => (
+                    <div key={name} className="rounded-lg border border-border bg-surface-2 p-6 hover:bg-surface-3 transition-colors">
+                      <div className="text-xs uppercase tracking-widest text-primary font-mono mb-2">{tag}</div>
+                      <div className="text-base font-medium text-foreground mb-1.5">{name}</div>
+                      <p className="text-sm text-text-secondary leading-relaxed">{desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </section>
+
         <Nodes />
         <LiveToday />
+
+        {/* T2-b: Per-chain stats — mainnet vs Ault-EVM */}
+        <section className="border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+            <SectionLabel n="04-b" label="Chain breakdown" />
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mt-4 mb-8">
+              Two chains within one network
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="rounded-lg border border-border bg-surface-2 px-6 py-5">
+                <div className="text-xs uppercase tracking-widest text-text-tertiary font-mono mb-3">Mainnet</div>
+                <div className="flex gap-6">
+                  <span className="text-2xl font-mono text-foreground">
+                    {blockHeight != null ? blockHeight.toLocaleString("en-US") : "—"}
+                  </span>
+                  <div className="text-xs text-text-tertiary self-center uppercase tracking-wider">Block</div>
+                </div>
+                <div className="flex gap-6 mt-2">
+                  <span className="text-2xl font-mono text-foreground">{activeValidators.toLocaleString("en-US")}</span>
+                  <div className="text-xs text-text-tertiary self-center uppercase tracking-wider">Validators</div>
+                </div>
+              </div>
+              <div className="rounded-lg border border-border bg-surface-2 px-6 py-5">
+                <div className="text-xs uppercase tracking-widest text-text-tertiary font-mono mb-3">Ault-EVM</div>
+                <div className="flex gap-6">
+                  <span className="text-2xl font-mono text-foreground">—</span>
+                  <div className="text-xs text-text-tertiary self-center uppercase tracking-wider">Block</div>
+                </div>
+                <div className="flex gap-6 mt-2">
+                  <span className="text-2xl font-mono text-foreground">—</span>
+                  <div className="text-xs text-text-tertiary self-center uppercase tracking-wider">Validators</div>
+                </div>
+                <p className="text-xs text-text-tertiary mt-3 font-mono">EVM block height pending RPC data source.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <DualFunnel />
+
+        {/* T1-e: Media / Video section */}
+        <section className="border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+            <div className="mb-12">
+              <SectionLabel n="08" label="Media" />
+              <h2 className="text-3xl md:text-4xl font-semibold text-foreground leading-[1.1] tracking-tight">
+                In the media
+              </h2>
+            </div>
+
+            {/* Explainer video thumbnail — WebM/MP4, no illustrated blobs */}
+            <div className="rounded-lg border border-border bg-surface-2 overflow-hidden mb-8">
+              <div className="relative aspect-video bg-surface-3 flex items-center justify-center group cursor-pointer">
+                <div className="absolute inset-0 bg-surface-3 flex items-center justify-center">
+                  <span
+                    className="text-6xl font-mono text-text-tertiary/30 select-none"
+                    aria-hidden
+                  >
+                    AULT
+                  </span>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center
+                     transition-transform duration-[200ms] ease-out group-hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                      fill="currentColor" className="w-10 h-10 text-primary-foreground ml-1">
+                      <path d="M8 5.14v14l11-7-11-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-surface/90 text-xs font-mono text-text-secondary">
+                  2:34
+                </div>
+              </div>
+              <div className="px-6 py-5">
+                <span className="text-xs uppercase tracking-widest text-primary font-mono">
+                  Explainer
+                </span>
+                <h3 className="text-base md:text-lg font-medium text-foreground mt-1">
+                  Ault Blockchain — Mainnet Launch Overview
+                </h3>
+                <p className="text-sm text-text-secondary mt-2 leading-relaxed max-w-xl">
+                  A short walkthrough of the protocol stack: what Licensed Mining
+                  Nodes do, how the Ault DAO governs the Community Pool, and why
+                  ISP-nexus placement matters for on-chain finality.
+                </p>
+              </div>
+            </div>
+
+            {/* Testimonial / quote tile */}
+            <div className="rounded-lg border border-border bg-surface-2 px-8 py-10 md:px-10 md:py-12">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                fill="currentColor" className="w-7 h-7 text-primary/40 mb-6">
+                <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.183 11 15c0 1.933-1.567 3.5-3.5 3.5-1.332 0-2.505-.663-3.09-1.679z
+                         M14.583 17.321C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C19.591 11.69 21 13.183 21 15c0 1.933-1.567 3.5-3.5 3.5-1.332 0-2.505-.663-3.09-1.679z" />
+              </svg>
+              <blockquote className="text-lg md:text-xl text-foreground leading-relaxed font-medium mb-6">
+                Ault&apos;s design philosophy is that a sovereign chain can offer both
+                EVM compatibility and miner-defined randomness without a trade-off
+                in finality. The results speak for themselves.
+              </blockquote>
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-surface-3 flex items-center justify-center text-xs font-mono text-text-tertiary uppercase">
+                  ICF
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">
+                    International Crypto Foundation
+                  </p>
+                  <p className="text-xs text-text-tertiary">
+                    Mainnet-A grade · Dec 2025
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
       <NewsSection />
       <SubscribeCTA />

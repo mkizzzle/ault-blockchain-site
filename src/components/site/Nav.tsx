@@ -6,6 +6,10 @@ const LOGO = "https://framerusercontent.com/images/urFmPvvAKkpVpjuL7AooFl6ZRT4.s
 
 type DropItem = { label: string; sub: string; href: string; external?: boolean };
 
+const securityItems: DropItem[] = [
+  { label: "Security Centre", sub: "Audit attestations, formal verification posture, and protocol disclosure", href: "/security" },
+];
+
 const networkItems: DropItem[] = [
   { label: "What is Ault Blockchain?", sub: "Hybrid PoW/PoS sovereign chain · Sub-second finality · Broad Ethereum application compatibility · Off-chain work layer", href: "/#about" },
   { label: "Technology & Architecture", sub: "Sovereign blockchain protocol with a Licensed Mining Node layer", href: "/#architecture" },
@@ -83,6 +87,7 @@ export function Nav() {
           <Dropdown label="Network" items={networkItems} />
           <Dropdown label="Documents" items={docsItems} />
           <Dropdown label="Ault Markets" items={marketsItems} />
+          <Dropdown label="Security" items={securityItems} />
           <a href="/contact" className="px-3 py-2 text-sm text-text-secondary hover:text-foreground transition-colors">Contact</a>
         </nav>
 
@@ -117,6 +122,12 @@ export function Nav() {
               ))}
             </div>
             <a href="/contact" className="block py-2 text-sm text-foreground">Contact</a>
+            <div>
+              <div className="text-xs uppercase tracking-wider text-text-tertiary mb-2">Security</div>
+              {securityItems.map((it) => (
+                <a key={it.label} href={it.href} className="block py-2 text-sm text-foreground">{it.label}</a>
+              ))}
+            </div>
             <a
               href="/license"
               target="_self"

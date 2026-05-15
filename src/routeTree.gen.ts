@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhitepaperRouteImport } from './routes/whitepaper'
 import { Route as TokenomicsRouteImport } from './routes/tokenomics'
+import { Route as SecurityRouteImport } from './routes/security'
 import { Route as NodesRouteImport } from './routes/nodes'
+import { Route as NewsroomRouteImport } from './routes/newsroom'
 import { Route as LicenseRouteImport } from './routes/license'
+import { Route as DevelopersRouteImport } from './routes/developers'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as LegalRiskDisclosuresRouteImport } from './routes/legal.risk-disclosures'
@@ -30,9 +34,19 @@ const TokenomicsRoute = TokenomicsRouteImport.update({
   path: '/tokenomics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NodesRoute = NodesRouteImport.update({
   id: '/nodes',
   path: '/nodes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsroomRoute = NewsroomRouteImport.update({
+  id: '/newsroom',
+  path: '/newsroom',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LicenseRoute = LicenseRouteImport.update({
@@ -40,9 +54,19 @@ const LicenseRoute = LicenseRouteImport.update({
   path: '/license',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DevelopersRoute = DevelopersRouteImport.update({
+  id: '/developers',
+  path: '/developers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -73,9 +97,13 @@ const LegalConstitutionRoute = LegalConstitutionRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
+  '/developers': typeof DevelopersRoute
   '/license': typeof LicenseRoute
+  '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
+  '/security': typeof SecurityRoute
   '/tokenomics': typeof TokenomicsRoute
   '/whitepaper': typeof WhitepaperRoute
   '/legal/constitution': typeof LegalConstitutionRoute
@@ -85,9 +113,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
+  '/developers': typeof DevelopersRoute
   '/license': typeof LicenseRoute
+  '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
+  '/security': typeof SecurityRoute
   '/tokenomics': typeof TokenomicsRoute
   '/whitepaper': typeof WhitepaperRoute
   '/legal/constitution': typeof LegalConstitutionRoute
@@ -98,9 +130,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
+  '/developers': typeof DevelopersRoute
   '/license': typeof LicenseRoute
+  '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
+  '/security': typeof SecurityRoute
   '/tokenomics': typeof TokenomicsRoute
   '/whitepaper': typeof WhitepaperRoute
   '/legal/constitution': typeof LegalConstitutionRoute
@@ -112,9 +148,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/case-studies'
     | '/contact'
+    | '/developers'
     | '/license'
+    | '/newsroom'
     | '/nodes'
+    | '/security'
     | '/tokenomics'
     | '/whitepaper'
     | '/legal/constitution'
@@ -124,9 +164,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/case-studies'
     | '/contact'
+    | '/developers'
     | '/license'
+    | '/newsroom'
     | '/nodes'
+    | '/security'
     | '/tokenomics'
     | '/whitepaper'
     | '/legal/constitution'
@@ -136,9 +180,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/case-studies'
     | '/contact'
+    | '/developers'
     | '/license'
+    | '/newsroom'
     | '/nodes'
+    | '/security'
     | '/tokenomics'
     | '/whitepaper'
     | '/legal/constitution'
@@ -149,9 +197,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
+  DevelopersRoute: typeof DevelopersRoute
   LicenseRoute: typeof LicenseRoute
+  NewsroomRoute: typeof NewsroomRoute
   NodesRoute: typeof NodesRoute
+  SecurityRoute: typeof SecurityRoute
   TokenomicsRoute: typeof TokenomicsRoute
   WhitepaperRoute: typeof WhitepaperRoute
   LegalConstitutionRoute: typeof LegalConstitutionRoute
@@ -176,11 +228,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TokenomicsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nodes': {
       id: '/nodes'
       path: '/nodes'
       fullPath: '/nodes'
       preLoaderRoute: typeof NodesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newsroom': {
+      id: '/newsroom'
+      path: '/newsroom'
+      fullPath: '/newsroom'
+      preLoaderRoute: typeof NewsroomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/license': {
@@ -190,11 +256,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LicenseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/developers': {
+      id: '/developers'
+      path: '/developers'
+      fullPath: '/developers'
+      preLoaderRoute: typeof DevelopersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -237,9 +317,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
+  DevelopersRoute: DevelopersRoute,
   LicenseRoute: LicenseRoute,
+  NewsroomRoute: NewsroomRoute,
   NodesRoute: NodesRoute,
+  SecurityRoute: SecurityRoute,
   TokenomicsRoute: TokenomicsRoute,
   WhitepaperRoute: WhitepaperRoute,
   LegalConstitutionRoute: LegalConstitutionRoute,

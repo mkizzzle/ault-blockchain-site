@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-surface-tint">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
           <div className="col-span-2 md:col-span-1">
             <img src={LOGO} alt="Ault Blockchain" className="h-7 w-auto mb-4" />
             <p className="text-sm text-text-secondary leading-relaxed">
@@ -24,10 +24,16 @@ export function Footer() {
           </div>
 
           <div className={col}>
+            <div className={heading}>Developer</div>
+            <a className={link} href="/developers">SDK &amp; REST API</a>
+            <a className={link} href="https://docs.aultblockchain.com" target="_blank" rel="noopener noreferrer">Documentation ↗</a>
+            <a className={link} href="https://github.com/ault-blockchain" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+
+          <div className={col}>
             <div className={heading}>Documents</div>
             {/* TODO: replace /whitepaper placeholder route with canonical whitepaper PDF when available */}
             <a className={link} href="/whitepaper">Whitepaper</a>
-            <a className={link} href="https://docs.aultblockchain.com" target="_blank" rel="noopener noreferrer">Public Docs ↗</a>
             <a className={link} href="/tokenomics">Tokenomics</a>
             <a className={link} href="/legal/constitution">Constitution</a>
             <a className={link} href="/legal/terms">Terms & Conditions</a>

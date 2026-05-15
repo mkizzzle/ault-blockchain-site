@@ -44,3 +44,4 @@ make-favicon.py
 
 # Build/dev scripts — not for Vercel deploy
 scripts/
+.vercel
