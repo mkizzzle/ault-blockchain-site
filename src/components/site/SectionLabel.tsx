@@ -4,12 +4,12 @@
  */
 export function SectionLabel({ n, label }: { n: string; label: string }) {
   return (
-    <div className="scroll-mt-[100px] border-y border-border">
-      <div className="mx-auto flex max-w-7xl items-center gap-3 px-6 py-4">
-        <span className="flex h-7 min-w-[40px] items-center justify-center bg-primary px-2 text-[13px] font-medium leading-none text-primary-foreground">
+    <div className="scroll-mt-[100px]">
+      <div className="mx-auto flex max-w-7xl items-baseline gap-4 px-6 py-3">
+        <span className="flex h-7 min-w-[44px] items-center justify-center bg-primary px-3 text-[15px] font-semibold leading-none text-primary-foreground">
           {n}
         </span>
-        <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary">
+        <p className="font-mono text-[15px] uppercase tracking-[0.15em] text-text-secondary">
           {label}
         </p>
       </div>
