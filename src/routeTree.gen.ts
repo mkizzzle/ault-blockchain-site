@@ -14,6 +14,7 @@ import { Route as TokenomicsRouteImport } from './routes/tokenomics'
 import { Route as SecurityRouteImport } from './routes/security'
 import { Route as NodesRouteImport } from './routes/nodes'
 import { Route as NewsroomRouteImport } from './routes/newsroom'
+import { Route as MediaRouteImport } from './routes/media'
 import { Route as LicenseRouteImport } from './routes/license'
 import { Route as DevelopersRouteImport } from './routes/developers'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -47,6 +48,11 @@ const NodesRoute = NodesRouteImport.update({
 const NewsroomRoute = NewsroomRouteImport.update({
   id: '/newsroom',
   path: '/newsroom',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LicenseRoute = LicenseRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/developers': typeof DevelopersRoute
   '/license': typeof LicenseRoute
+  '/media': typeof MediaRoute
   '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
   '/security': typeof SecurityRoute
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/developers': typeof DevelopersRoute
   '/license': typeof LicenseRoute
+  '/media': typeof MediaRoute
   '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
   '/security': typeof SecurityRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/developers': typeof DevelopersRoute
   '/license': typeof LicenseRoute
+  '/media': typeof MediaRoute
   '/newsroom': typeof NewsroomRoute
   '/nodes': typeof NodesRoute
   '/security': typeof SecurityRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/developers'
     | '/license'
+    | '/media'
     | '/newsroom'
     | '/nodes'
     | '/security'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/developers'
     | '/license'
+    | '/media'
     | '/newsroom'
     | '/nodes'
     | '/security'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/developers'
     | '/license'
+    | '/media'
     | '/newsroom'
     | '/nodes'
     | '/security'
@@ -201,6 +213,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DevelopersRoute: typeof DevelopersRoute
   LicenseRoute: typeof LicenseRoute
+  MediaRoute: typeof MediaRoute
   NewsroomRoute: typeof NewsroomRoute
   NodesRoute: typeof NodesRoute
   SecurityRoute: typeof SecurityRoute
@@ -247,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/newsroom'
       fullPath: '/newsroom'
       preLoaderRoute: typeof NewsroomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/license': {
@@ -321,6 +341,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DevelopersRoute: DevelopersRoute,
   LicenseRoute: LicenseRoute,
+  MediaRoute: MediaRoute,
   NewsroomRoute: NewsroomRoute,
   NodesRoute: NodesRoute,
   SecurityRoute: SecurityRoute,
